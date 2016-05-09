@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1045</width>
+    <height>813</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1045</width>
+    <height>813</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>1060</width>
+    <height>840</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>OP Config</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* ----------------------------------------------------------------------------------------------------------------------------*/
+/* FORM BACKGROUND
+/* ----------------------------------------------------------------------------------------------------------------------------*/
+/* This is the main background color of the overall form */
+QMainWindow#MainWindow, QWidget#centralWidget {
+	background: #454F65;	/* Dark purple grey */
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------*/
+/* STACKED WIDGET
+/* ----------------------------------------------------------------------------------------------------------------------------*/
+/* This is our widget with buttons along the left side and a content area on the right */
+/* Background of area where all the main content boxes are */
+QStackedWidget#stackedWidgetMain{ 
+	border-left: 0;
+	background: #E1E3E3; 	/* Light purple grey */
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------*/
+/* LISTVIEW - THESE ARE THE BUTTONS ALONG THE LEFT SIDE
+/* ----------------------------------------------------------------------------------------------------------------------------*/
+QListView {
+    show-decoration-selected: 1; /* make the selection span the entire width of the view */
+    background: #39085A;	/* Purple */
+	color: #000;	/* font-color black */
+}
+/* This is the item not-selected and not-hovered */
+QListView::item {
+	background: #39085A;	/* Purple */
+	color: #FFF;	/* font-color white */
+	padding: 10; 
+	border-top: 1px solid #FFF; /* White */
+	border-bottom: 1px solid #FFF; /* White */
+	margin: 0;
+}
+/* Selected */
+QListView::item:selected, QListView::item:selected:active { 
+	/* Horizontal gradient from white on the left to light purple grey on the right, blending into the light purple grey of the form */
+	background: qlineargradient(x1:1, y1:0, x2: 0, y2: 0, stop: 0 #E1E3E3, stop: 1 #FFFFFF);
+	color: #000;
+	border-right: 0;
+}
+/* Hover */
+QListView::item:!selected:hover {
+	background: #454F65;	/* Dark purple grey */
+	color: #FFF;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------*/
+/* MENU BAR
+/* ----------------------------------------------------------------------------------------------------------------------------*/
+/* Menu bar */
+QMenuBar{
+    padding-left: 8px;
+	background: #454F65;	/* Dark purple grey */
+	color: #FFF;
+}
+QMenuBar::item {
+/*    spacing: 3px;  spacing between menu bar items */
+    padding: 10px 4px 2px 6px;
+	background: #454F65;
+}
+/* when selected using mouse or keyboard, OR when hovering (there is no hover) */
+QMenuBar::item:selected { 
+    background: #39085A;	/* Purple */
+}
+QMenuBar::item:pressed {
+	border-style: inset;	/*sunken*/
+}
+/* Menu Items */
+QMenu {
+    background-color: white;
+    margin: 2px; /* some spacing around the menu */
+}
+QMenu::item {
+    padding: 2px 25px 2px 20px;
+    border: 1px solid transparent; /* reserve space for selection border */
+}
+QMenu::item:selected {
+    border-color: #39085A;
+	background: #E1E3E3;	/* Light purple grey */
+}
+QMenu::separator {
+    height: 1px;
+    background: #454F65;
+/*    margin-left: 10px;
+    margin-right: 5px;*/
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------*/
+/* OPEN PANZER HEADER FRAME
+/* ----------------------------------------------------------------------------------------------------------------------------*/
+QFrame#frmHeader{
+	background: #39085A;	/* Purple */
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------*/
+/* SUB-HEADER: DEVICE NAME, AND SERIAL SETTINGS
+/* ----------------------------------------------------------------------------------------------------------------------------*/
+QFrame#frmSerial{
+	border: 0;
+    border-bottom: 1px solid #666;
+/*    border-top: 1px solid #000; */
+	background-color: #FFF;	/* white */
+}
+
+
+</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="verticalSpacing">
+       <number>0</number>
+      </property>
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetNoConstraint</enum>
+        </property>
+        <property name="topMargin">
+         <number>5</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QFrame" name="frmHeader">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>55</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="verticalSpacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QFrame" name="frmSerial">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>42</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QListView" name="listViewWest">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+                <horstretch>2</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>170</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="sizeIncrement">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Malgun Gothic</family>
+                <pointsize>17</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+                <stylestrategy>PreferAntialias</stylestrategy>
+                <kerning>false</kerning>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
+              <property name="lineWidth">
+               <number>1</number>
+              </property>
+              <property name="autoScroll">
+               <bool>true</bool>
+              </property>
+              <property name="editTriggers">
+               <set>QAbstractItemView::NoEditTriggers</set>
+              </property>
+              <property name="showDropIndicator" stdset="0">
+               <bool>false</bool>
+              </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectItems</enum>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="movement">
+               <enum>QListView::Static</enum>
+              </property>
+              <property name="flow">
+               <enum>QListView::TopToBottom</enum>
+              </property>
+              <property name="resizeMode">
+               <enum>QListView::Fixed</enum>
+              </property>
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="gridSize">
+               <size>
+                <width>0</width>
+                <height>49</height>
+               </size>
+              </property>
+              <property name="uniformItemSizes">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QStackedWidget" name="stackedWidgetMain">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>600</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Sunken</enum>
+              </property>
+              <property name="currentIndex">
+               <number>6</number>
+              </property>
+              <widget class="QWidget" name="pgRadio">
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <widget class="QLabel" name="label">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>10</y>
+                  <width>91</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>Radio Page</string>
+                </property>
+               </widget>
+              </widget>
+              <widget class="QWidget" name="pgMotors">
+               <widget class="QLabel" name="label_2">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>10</y>
+                  <width>91</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>Motors Page</string>
+                </property>
+               </widget>
+              </widget>
+              <widget class="QWidget" name="pgLightsIO">
+               <widget class="QLabel" name="label_3">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>10</y>
+                  <width>91</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>Lights page</string>
+                </property>
+               </widget>
+              </widget>
+              <widget class="QWidget" name="pgFunctions">
+               <widget class="QLabel" name="label_4">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>10</y>
+                  <width>91</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>Functions Page</string>
+                </property>
+               </widget>
+              </widget>
+              <widget class="QWidget" name="pgDriving">
+               <widget class="QLabel" name="label_5">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>10</y>
+                  <width>91</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>Driving Page</string>
+                </property>
+               </widget>
+              </widget>
+              <widget class="QWidget" name="pgBattle">
+               <widget class="QLabel" name="label_6">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>10</y>
+                  <width>91</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>Battle Page</string>
+                </property>
+               </widget>
+              </widget>
+              <widget class="QWidget" name="pgSounds">
+               <widget class="QLabel" name="label_7">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>10</y>
+                  <width>91</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>Sounds page</string>
+                </property>
+               </widget>
+              </widget>
+              <widget class="QWidget" name="pgMisc">
+               <widget class="QLabel" name="label_8">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>10</y>
+                  <width>91</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>Misc Page</string>
+                </property>
+               </widget>
+              </widget>
+              <widget class="QWidget" name="pgFirmware">
+               <widget class="QLabel" name="label_9">
+                <property name="geometry">
+                 <rect>
+                  <x>20</x>
+                  <y>10</y>
+                  <width>91</width>
+                  <height>21</height>
+                 </rect>
+                </property>
+                <property name="text">
+                 <string>Firmware Page</string>
+                </property>
+               </widget>
+              </widget>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="frame">
+              <property name="minimumSize">
+               <size>
+                <width>12</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">    background: #C1CADE;
+    background: #A6B5C8;
+    background: #E1E3E3;</string>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="frmWorkBottom">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>12</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">    background: #A6B5C8;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+    background: #E1E3E3;</string>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <widget class="QFrame" name="frmTopSpacer">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>12</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background: #E1E3E3;</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1045</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionOpenFile">
+   <property name="text">
+    <string>Import Settings</string>
+   </property>
+   <property name="iconText">
+    <string>Import Settings</string>
+   </property>
+   <property name="toolTip">
+    <string>Import Settings from OPZ file</string>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+  </action>
+  <action name="actionSaveFile">
+   <property name="text">
+    <string>Save Settings to File</string>
+   </property>
+   <property name="toolTip">
+    <string>Save Settings to OPZ File</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionWrite">
+   <property name="text">
+    <string>Write Settings to Device</string>
+   </property>
+  </action>
+  <action name="actionRead">
+   <property name="text">
+    <string>Read Settings from Device</string>
+   </property>
+  </action>
+  <action name="actionConnect">
+   <property name="text">
+    <string>Connect</string>
+   </property>
+  </action>
+  <action name="actionDisconnect">
+   <property name="text">
+    <string>Disconnect</string>
+   </property>
+  </action>
+  <action name="actionHelp_Contents">
+   <property name="text">
+    <string>Help Contents</string>
+   </property>
+  </action>
+  <action name="actionCheck_for_Updates">
+   <property name="text">
+    <string>Check for Updates</string>
+   </property>
+  </action>
+  <action name="actionAbout_OP_Config">
+   <property name="text">
+    <string>About OP Config</string>
+   </property>
+  </action>
+  <action name="actionResetAllVals">
+   <property name="text">
+    <string>Reset All Values to Default</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
