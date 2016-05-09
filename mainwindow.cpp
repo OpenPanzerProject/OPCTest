@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     // trigger the stacked widget change the way a click will. So we also set the stacked widget explicitly.
       ui->listViewWest->setCurrentIndex(listViewWestModel->index(0,0));
       ui->stackedWidgetMain->setCurrentIndex(0);
-      qApp->processEvents();  // Equivalent of VB DoEvents()
+      qApp->processEvents();
 
 }
 
@@ -61,12 +61,11 @@ void MainWindow::changeStackedWidget(const QModelIndex& current, const QModelInd
     ui->stackedWidgetMain->setFocus();
 }
 
-// Uncomment the below if compiling in Qt 5.6
-/*void MainWindow::changeStackedWidget56Fix(const QModelIndex& current)
+void MainWindow::changeStackedWidget56Fix(const QModelIndex& current)
 {
     // In Qt 5.6, there is a bug that will highlight both the current listView item and the one after it, whenever
     // you click on it. I was able to work around this by adding a second signal from listViewWest clicked that
     // calls this slot. It causes a flicker because the second item is still selected, but then this one de-selects it.
     ui->listViewWest->setCurrentIndex(current);
-    qApp->processEvents();  // Equivalent of VB DoEvents()
-}*/
+    qApp->processEvents();
+}
