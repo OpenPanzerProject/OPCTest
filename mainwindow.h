@@ -28,7 +28,7 @@ signals:
 private slots:
     void changeStackedWidget(const QModelIndex&, const QModelIndex&);
     // A fix for the dual-select bug in Qt 5.6
-    //void changeStackedWidget56Fix(const QModelIndex&);
+    void changeStackedWidget56Fix(const QModelIndex&);
 
 private:
       Ui::MainWindow *ui;
